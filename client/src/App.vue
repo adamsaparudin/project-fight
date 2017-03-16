@@ -8,11 +8,7 @@
 <script>
 export default {
   name: 'app',
-  methods: {
-    getLocationStorage() {
-      return localStorage.getItem("token")
-    }
-  }
+  methods: {}
 }
 </script>
 
