@@ -87,12 +87,14 @@
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me',{fields : 'name,email,gender,picture'},function(response) {
-      console.log(response);
-      console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
+      axios.post('http://localhost:3000/api/users', response).then( (res) => {
+        console.log(res);
+      }).catch( (err) => {
+        console.log(err);
+      })
 
-      
     });
   }
   </script>
