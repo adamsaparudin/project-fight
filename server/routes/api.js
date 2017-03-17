@@ -11,5 +11,6 @@ router.get('/', function(req, res, next) {
 // User API
 router.get('/users', User.read)
 router.post('/users', User.create)
+router.get('/users/:id', User.getOne)
 
 module.exports = router;

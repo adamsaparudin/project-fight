@@ -10,6 +10,7 @@
 <script>
 import axios from 'axios'
 import Vue from 'vue'
+import jwt from 'jwt-decode'
 import FBSignInButton from 'vue-facebook-signin-button'
 Vue.use(FBSignInButton)
 export default {
@@ -27,7 +28,8 @@ export default {
         axios.post('http://localhost:3000/api/users', dude)
         .then( (res) => {
           localStorage.setItem('token', res.data.token);
-          window.location = "http://localhost:8080/"
+          let objUser = jwt(res.data.token)
+          window.location = `http://localhost:8080/profile/${objUser._doc._id}`
         }).catch( (err) => {
           console.log(err);
         })

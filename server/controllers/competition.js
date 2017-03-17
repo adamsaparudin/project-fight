@@ -12,9 +12,30 @@ module.exports = {
         name: req.body.category_name,
         tipe: req.body.category_tipe
       },
+      listPeopleJoin: [{type: Schema.Types.ObjectId, ref: 'User'}],
+      maxPeople: {type: Number, default: 2, max: 20, min: 2},
       photo: req.body.photo
     }, (err, detail)=>{
       res.send({data : detail})
+    })
+  },
+
+  joinUser: (req, res, next) => {
+    Competition.findById(req.params.id, (err, doc) => {
+      if(err) res.send(err)
+      else {
+        doc.update({$push: {listPeopleJoin: req.params.userid}}, (error, result) => {
+          if(error) res.send(error)
+          else res.send(result)
+        })
+      }
+    })
+  },
+
+  readOne: (req, res, next) => {
+    Competition.findById(req.params.id, (err, doc) => {
+      if(err) res.send(err)
+      else res.send(doc)
     })
   },
 

@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-//import jwt from 'jwt-simple'
 import jwt_decode from 'jwt-decode'
+
+import Home from '@/components/Home'
 import Hello from '@/components/Hello'
 import Login from '@/components/Login'
+import ListBattle from '@/components/Battle/ListBattle'
+import BattleOne from '@/components/Battle/BattleOne'
+import HomeProfile from '@/components/Profile/HomeProfile'
 
 Vue.use(Router)
 
@@ -17,13 +21,26 @@ function checkToken(to, from, next) {
     to('/login')
 }
 
+
+
 export default new Router({
   mode: "history",
+
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello,
+      name: 'Home',
+      component: Home,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/profile/:id',
+      name: 'Profile',
+      component: HomeProfile,
       beforeEnter: (to, from, next) => {
         //let decoded = jwt.decode(localStorage.getItem("token"), "Kelompok3Hacktiv8")
         if(localStorage.getItem("token") !== null) {
@@ -35,9 +52,32 @@ export default new Router({
       }
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login
+      path: '/list-battle',
+      name: 'List-Battle',
+      component: ListBattle,
+      beforeEnter: (to, from, next) => {
+        //let decoded = jwt.decode(localStorage.getItem("token"), "Kelompok3Hacktiv8")
+        if(localStorage.getItem("token") !== null) {
+          console.log(jwt_decode(localStorage.getItem("token"))._doc);
+          next()
+        }
+        else
+          window.location.href='/login'
+      }
     },
+    {
+      path: '/battle/:id',
+      name: 'Battle',
+      component: BattleOne,
+      beforeEnter: (to, from, next) => {
+        //let decoded = jwt.decode(localStorage.getItem("token"), "Kelompok3Hacktiv8")
+        if(localStorage.getItem("token") !== null) {
+          console.log(jwt_decode(localStorage.getItem("token"))._doc);
+          next()
+        }
+        else
+          window.location.href='/login'
+      }
+    }
   ],
 })
