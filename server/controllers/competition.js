@@ -7,12 +7,14 @@ module.exports = {
       name: req.body.name,
       description: req.body.description,
       place: req.body.place,
-      time: req.body.time,
+      time: req.body.time ,
       category: {
         name: req.body.category_name,
-        tipe: rq.body.category_tipe
+        tipe: req.body.category_tipe
       },
       photo: req.body.photo
+    }, (err, detail)=>{
+      res.send({data : detail})
     })
   },
 
@@ -35,7 +37,7 @@ module.exports = {
     })
   },
 
-  deleteComment: (req, res, next) => {
+  deleteCompetition: (req, res, next) => {
     Competition.remove({_id : req.params.id}, (err, doc) => {
       if (err) res.send(err)
       else res.send(doc)

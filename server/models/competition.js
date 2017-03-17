@@ -7,7 +7,7 @@ let competitionSchema = new Schema({
   name: {type: String, required: true},
   description: {type: String},
   place: {type: String},
-  time: {type: Date default: new Date()},
+  time: {type: Date ,default: new Date()},
   category: [{
     name: String,
     tipe: String
