@@ -24,45 +24,13 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div v-for="Battle in listBattle" class="col-md-3">
                     <div class="item">
                         <div class="content">
-                            <a href="#"><img src="https://unsplash.it/200/300/?random"></img></a>
+                            <a :href="'http://localhost:8080/battle/' + Battle._id">
+                              <img style="width: 200px; height:300px;" :src="Battle.photo"></img></a>
                             <div>
-                                <a href="#" style="color:#fff">Battle Name</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="item">
-                        <div class="content">
-                            <a href="#"><img src="https://unsplash.it/200/300/?random"></img></a>
-                            <div>
-                                <a href="#" style="color:#fff">Battle Name</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="item">
-                        <div class="content">
-                            <a href="#"><img src="https://unsplash.it/200/300/?random"></img></a>
-                            <div>
-                                <a href="#" style="color:#fff">Battle Name</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="item">
-                        <div class="content">
-                            <a href="#"><img src="https://unsplash.it/200/300/?random"></img></a>
-                            <div>
-                                <a href="#" style="color:#fff">Battle Name</a>
+                                <a href="#" style="color:#fff">{{ Battle.name }}</a>
                             </div>
                         </div>
                     </div>
@@ -71,54 +39,6 @@
         </div>
 
         <br><br><br>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="item">
-                        <div class="content">
-                            <a href="#"><img src="https://unsplash.it/200/300/?random"></img></a>
-                            <div>
-                                <a href="#" style="color:#fff">Battle Name</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="item">
-                        <div class="content">
-                            <a href="#"><img src="https://unsplash.it/200/300/?random"></img></a>
-                            <div>
-                                <a href="#" style="color:#fff">Battle Name</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="item">
-                        <div class="content">
-                            <a href="#"><img src="https://unsplash.it/200/300/?random"></img></a>
-                            <div>
-                                <a href="#" style="color:#fff">Battle Name</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="item">
-                        <div class="content">
-                            <a href="#"><img src="https://unsplash.it/200/300/?random"></img></a>
-                            <div>
-                                <a href="#" style="color:#fff">Battle Name</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="container">
             <div class="row">

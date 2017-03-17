@@ -20,7 +20,7 @@
                     <br><br>
                     <form>
                         <div class="btn-group">
-                            <label for="location" style="font-size: 13pt">Location:  </label>
+                            <label for="location" style="font-size: 13pt"> </label>
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                 select arena <span class="caret"></span>
                             </button>
@@ -41,7 +41,7 @@
                        </div>
                        <br><br>
                        <div class="btn-group">
-                           <label for="category" style="font-size: 13pt">Category: </label>
+                           <label for="category" style="font-size: 13pt"> </label>
                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                select category <span class="caret"></span>
                            </button>

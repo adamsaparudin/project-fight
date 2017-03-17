@@ -3,6 +3,7 @@ let Competition = require('../models/competition')
 module.exports = {
 
   create: (req, res, next) => {
+    console.log(req.body);
     Competition.create({
       name: req.body.name,
       description: req.body.description,
@@ -12,11 +13,19 @@ module.exports = {
         name: req.body.category_name,
         tipe: req.body.category_tipe
       },
-      listPeopleJoin: [{type: Schema.Types.ObjectId, ref: 'User'}],
-      maxPeople: {type: Number, default: 2, max: 20, min: 2},
       photo: req.body.photo
     }, (err, detail)=>{
-      res.send({data : detail})
+      if(err) res.send(err)
+      else res.send({data : detail})
+    })
+  },
+
+  findOneList : (req,res,next) => {
+    Competition.findOne({
+      '_id' : req.body.id
+    }, (err, doc) => {
+      if (err) res.send(err)
+      else res.send(doc)
     })
   },
 

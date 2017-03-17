@@ -11,11 +11,17 @@ export default {
   data() {
     return {
       test: "test",
-      objUser: jwt(localStorage.getItem("token"))._doc
+      objUser: ''
     }
   },
   name: 'app',
-  methods: {}
+  methods: {},
+  mounted: function() {
+    if(localStorage.getItem("token") !== null)
+      this.objUser = jwt(localStorage.getItem("token"))._doc
+    else
+      this.objUser = ''
+  }
 }
 </script>
 

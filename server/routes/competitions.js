@@ -13,5 +13,6 @@ router.get('/competitions', Competition.read)
 router.post('/competitions', Competition.create)
 router.delete('/competitions/:id', Competition.deleteCompetition)
 router.put('/competitions/:id', Competition.update)
+router.get('/competitions/:id', Competition.findOneList)
 
 module.exports = router;

@@ -12,6 +12,8 @@ let competitionSchema = new Schema({
     name: String,
     tipe: String
   }],
+  listPeopleJoin: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  maxPeople: {type: Number, default: 2, max: 20, min: 2},
   photo: {type: String}
 }, {
   timestamps: true

@@ -30,7 +30,10 @@
                       <a class="page-scroll" href = "#">{{ objUser.name }}</a>
                   </li>
                   <li>
-                      <a class="page-scroll" href="/login">Logout</a>
+                      <a class="page-scroll" href="/logout">Logout</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll" href="/create-battle">Create Battle</a>
                   </li>
               </ul>
           </div>
@@ -41,11 +44,28 @@
 </template>
 
 <script>
+import jwt from 'jwt-decode'
 export default {
   data() {
     return {
-      objUser: this.$parent.$parent.objUser
+      objUser: ''
     }
+  },
+  method: {
+    setUser() {
+      if(localStorage.getItem("token") !== null) {
+        console.log("Fired");
+        this.objUser = jwt(localStorage.getItem("token"))._doc
+      }
+      else
+        this.objUser = ''
+    }
+  },
+  mounted: function() {
+    if(localStorage.getItem("token") !== null)
+      this.objUser = jwt(localStorage.getItem("token"))._doc
+    else
+      this.objUser = ''
   },
   name: 'HeadingLogin'
 }
