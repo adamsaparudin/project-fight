@@ -12,26 +12,22 @@ module.exports = {
       if(err) res.send(err)
       else {
         if(!user) {
-          user = new User({
+          User.create({
             email: req.body.email,
             fb_id: req.body.id,
             name: req.body.name,
-            profilePic: req.body.picture.data.url,
             gender: req.body.gender
-          })
-          user.save().then( (createdUser) => {
-              if(error) res.send(error)
-
-              else {
-                let token = jwt.sign(createdUser, 'Kelompok3Hacktiv8')
-                res.send({token: token})
-              }
-          })
-          .catch( (error) => {
-            res.send(error)
+          }, (error, createdUser) => {
+            if(err) res.send(err)
+            else {
+              console.log("I WAS HERE");
+              let token = jwt.sign(createdUser, 'Kelompok3Hacktiv8')
+              res.send({token: token})
+            }
           })
         }
         else {
+          console.log("dari else");
           let token = jwt.sign(user, 'Kelompok3Hacktiv8')
           res.send({token: token})
         }

@@ -1,19 +1,29 @@
 <template>
-  <div class="hello">
+  <div class="login">
     <h1>{{ msg }}</h1>
+
+    <fbLogin></fbLogin>
+
   </div>
 </template>
 
 <script>
-console.log("login page");
+import fbLogin from './LoginFacebook'
+
 export default {
   name: 'login',
   data () {
     return {
       msg: 'Login page'
     }
+  },
+  components: {
+    fbLogin
   }
+
 }
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -34,5 +44,13 @@ li {
 
 a {
   color: #42b983;
+}
+.fb-btn {
+  padding: 10px 20px;
+  background-color: #3b5998;
+  color: #fff;
+  border: solid 1px #fff;
+  border-radius: 5px;
+  font-size: 14px;
 }
 </style>

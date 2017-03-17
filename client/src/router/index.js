@@ -10,10 +10,11 @@ Vue.use(Router)
 function checkToken(to, from, next) {
   //let decoded = jwt.decode(localStorage.getItem("token"), "Kelompok3Hacktiv8")
   if(localStorage.getItem("token") !== null) {
-    console.log(jwt_decode(localStorage.getItem("token")));
+    console.log(jwt_decode(localStorage.getItem("token"))._doc);
+    next()
   }
   else
-    window.location.href = '/login'
+    to('/login')
 }
 
 export default new Router({
@@ -23,7 +24,15 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello,
-      beforeEnter: checkToken
+      beforeEnter: (to, from, next) => {
+        //let decoded = jwt.decode(localStorage.getItem("token"), "Kelompok3Hacktiv8")
+        if(localStorage.getItem("token") !== null) {
+          console.log(jwt_decode(localStorage.getItem("token"))._doc);
+          next()
+        }
+        else
+          window.location.href='/login'
+      }
     },
     {
       path: '/login',
